@@ -245,7 +245,6 @@ git的工作流程:
 \item 分支相关，因为我在这各种折腾所以代码相对较多：
 \begin{lstlisting}[breaklines=true]
 	git branch 分支名字  %创建本地分支
-	git branch -a  %列出所有（远端+近端）分支
 	git remote -v  %查看本地库对应的远程库
 	git branch  %查看本地分支(对应当前分支有一个星号，正常是有输出的，未commit提交的库是空的，此时无显示，git add .以及git commit -m ""后就有显示了)
 	git checkout 分支名称  %分支切换
@@ -255,7 +254,8 @@ git的工作流程:
 
 \item 推送相关：
 \begin{lstlisting}[breaklines=true]
-	git remote add 远程库名称(自己在github上起的名字) 远程库地址(网页的链接，直接复制)  %关联远程仓库，其实如果你建立库的时候啥也没有。它会提示你要干啥的。我就因为输代码的时候忘了add纠结了很久。。。。
+	git remote add 远程库名称(自己起的名字) 远程库地址(网页的链接，直接复制)  %关联远程仓库，其实如果你建立库的时候啥也没有。它会提示你要干啥的。我就因为输代码的时候忘了add纠结了很久。。。。
+	git branch -a  %列出所有（远端+近端）分支
 	git push 远程库名称 分支名称 （推送所有：--all）  :向远程库推送本地分支
 	git push   %先配置好远程才行，否则得输入github的用户名密码，第一次提交需要： git push -u 远程库名称 上传的分支  才行
 \end{lstlisting}
@@ -270,6 +270,5 @@ git的工作流程:
 mote-connection.git' ，\href{https://www.cnblogs.com/Rainingday/p/12364690.html}{这是原因}，用git pull --rebase origin main
 可以搞定，再git push -u origin main就好
 \end{enumerate}
-
 
 \end{document}
