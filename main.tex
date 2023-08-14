@@ -253,6 +253,7 @@ git的工作流程:
 \end{lstlisting}
 
 \item 推送相关：
+可以建个.gitignore文件，把不用传的文件名字粘过去，再提交后里面的文件就不会被push到远程了。
 \begin{lstlisting}[breaklines=true]
 	git remote add 远程库名称(自己起的名字) 远程库地址(网页的链接，直接复制)  %关联远程仓库，关联后git branch -a才会显示远程的那个分支，也是第一次提交。另：其实如果你建立库的时候啥也没有，它会提示你要干啥的。我就因为输代码的时候忘了add纠结了很久。。。。
 	git branch -a  %列出所有（远端+近端）分支
