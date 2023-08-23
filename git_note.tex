@@ -276,6 +276,17 @@ git的工作流程:
 在（乱删分支后）遇到过一个问题：failed to push some refs to 'https://github.com/aipuxilong0618/
 try-for-remote-connection.git' ，\href{https://www.cnblogs.com/Rainingday/p/12364690.html}{这是原因}，用git pull --rebase origin main
 可以搞定，再git push -u origin main就好
+
+在push时出现过$latex_note$ does not appear to be a git repository这个问题，因为找不到远程仓库，怎么排除的我也不知道吧。。。。一番操作后就好了，我用过的代码：
+
+\begin{lstlisting}
+	 git remote add origin git@github:×××.git
+	 上面的代码  git pull --rebase origin main
+	 git clone 要上传的网址
+	 重新建立远程  git remote add latex_note 网址
+	 git push -u origin main
+\end{lstlisting}
+
 \end{enumerate}
 
 \end{document}
