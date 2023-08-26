@@ -221,55 +221,55 @@ git的工作流程:
 \begin{enumerate}
 \item 打开一个新的文件夹：
 \begin{lstlisting}[breaklines=true]
-	git config --global user.name "jiazhe" %配置用户名及邮箱
-	git config --global user.email 1376743525@qq.com
+git config --global user.name "jiazhe" %配置用户名及邮箱
+git config --global user.email 1376743525@qq.com
 	
-	git init %创建新的仓库，输入后会出现一个.git的隐藏文件
-	git init -b 分支名称 %创建新的仓库并直接命名分支名称，个人觉得这么写更好，否则可能你本地默认一个master分支远程是个main分支，push后显示两个分支，还要合并删除啥的太麻烦
+git init %创建新的仓库，输入后会出现一个.git的隐藏文件
+git init -b 分支名称 %创建新的仓库并直接命名分支名称，个人觉得这么写更好，否则可能你本地默认一个master分支远程是个main分支，push后显示两个分支，还要合并删除啥的太麻烦
 \end{lstlisting}
 
 \item 克隆远程：
 \begin{lstlisting}[breaklines=true]
-	git clone 网页链接  %github里可以直接提取链接
+git clone 网页链接  %github里可以直接提取链接
 \end{lstlisting}	
 	
 \item 本地文件相关代码：
 \begin{lstlisting}[breaklines=true]
-	git status %查看所有文件状态，有事没事就看看
-	git add .  %添加到暂存区，.表示上传全部文件，也可以指定文件
-	git commit %这么写会出来一个框，在vi编辑器里面写注释，i开始写写完后按esc键后:wq退出q!不保存退出
-	git commit -m "提交的信息"  %也可以直接git commit --amend -m "提交的信息"，查看日志里少一条
+git status %查看所有文件状态，有事没事就看看
+git add .  %添加到暂存区，.表示上传全部文件，也可以指定文件
+git commit %这么写会出来一个框，在vi编辑器里面写注释，i开始写（进入输入模式，在第一行输入就行）写完后按esc键后（回到普通模式）:（进入底行模式）qw保存退出q!不保存退出
+git commit -m "提交的信息"  %也可以直接git commit --amend -m "提交的信息"，查看日志里少一条
 	
 \end{lstlisting}	
 
 \item 分支相关，因为我在这各种折腾所以代码相对较多：
 \begin{lstlisting}[breaklines=true]
-	git branch 分支名字  %创建本地分支
-	git remote -v  %查看本地库对应的远程库
-	git branch  %查看所有本地分支(对应当前分支有一个星号，正常是有输出的，未commit提交的库是空的，此时无显示，git add .以及git commit -m ""后就有显示了)
-	git branch -r %查看所有远程分支
-	git branch -a %查看所有远程及本地分支
-	git checkout 分支名称  %分支切换
-	git merge 要合并的分支 %合并指定分支到当前分支
-	git branch -d 分支名称  %删除分支
-	git push 远程库名称 -d(-D：强制删除有修改未合并) 分支名称  %删除远程分支
-	git remote remove 远程仓库名字  %移除已关联的远程仓库
+git branch 分支名字  %创建本地分支
+git remote -v  %查看本地库对应的远程库
+git branch  %查看所有本地分支(对应当前分支有一个星号，正常是有输出的，未commit提交的库是空的，此时无显示，git add .以及git commit -m ""后就有显示了)
+git branch -r %查看所有远程分支
+git branch -a %查看所有远程及本地分支
+git checkout 分支名称  %分支切换
+git merge 要合并的分支 %合并指定分支到当前分支
+git branch -d 分支名称  %删除分支
+git push 远程库名称 -d(-D：强制删除有修改未合并) 分支名称  %删除远程分支
+git remote remove 远程仓库名字  %移除已关联的远程仓库
 				
 \end{lstlisting}
 
 \item 推送相关：
 可以建个.gitignore文件，把不用传的文件名字粘过去，再提交后里面的文件就不会被push到远程了。如果规则不生效的话，原因是 .gitignore 只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：
 \begin{lstlisting}
-	git rm -r --cached .	
-	git add .	
-	git commit -m 'update .gitignore'
+git rm -r --cached .	
+git add .	
+git commit -m 'update .gitignore'
 \end{lstlisting}
 推送相关代码：
 \begin{lstlisting}[breaklines=true]
-	git remote add 远程库名称(自己起的名字) 远程库地址(网页的链接，直接复制)  %关联远程仓库，关联后git branch -a才会显示远程的那个分支，也是第一次提交。另：其实如果你建立库的时候啥也没有，它会提示你要干啥的。我就因为输代码的时候忘了add纠结了很久。。。。
-	git branch -a  %列出所有（远端+近端）分支
-	git push 远程库名称 分支名称 （推送所有：--all）  :向远程库推送本地分支
-	git push   %先配置好远程才行，否则得输入github的用户名密码，第一次提交需要： git push -u 远程库名称 上传的分支  才行
+git remote add 远程库名称(自己起的名字) 远程库地址(网页的链接，直接复制)  %关联远程仓库，关联后git branch -a才会显示远程的那个分支，也是第一次提交。另：其实如果你建立库的时候啥也没有，它会提示你要干啥的。我就因为输代码的时候忘了add纠结了很久。。。。
+git branch -a  %列出所有（远端+近端）分支
+git push 远程库名称 分支名称 （推送所有：--all）  :向远程库推送本地分支
+git push   %先配置好远程才行，否则得输入github的用户名密码，第一次提交需要： git push -u 远程库名称 上传的分支  才行
 \end{lstlisting}
 
 \item 遇到的问题：
